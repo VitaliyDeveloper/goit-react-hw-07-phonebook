@@ -1,11 +1,11 @@
+import { FooterContainer, FooterAddress, FooterCopy } from './Footer.styled';
+
 const Footer = () => {
   return (
-    <div>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae,
-        laudantium.
-      </p>
-    </div>
+    <FooterContainer>
+      <FooterAddress>Almaty, Kazakhstan</FooterAddress>
+      <FooterCopy>&copy; copyright 2022</FooterCopy>
+    </FooterContainer>
   );
 };
 
