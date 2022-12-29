@@ -18,5 +18,5 @@ export const FooterAddress = styled.address`
 
 export const FooterCopy = styled.p`
   text-align: center;
-  color: #757575;
+  color: var(--some-white-color);
 `;

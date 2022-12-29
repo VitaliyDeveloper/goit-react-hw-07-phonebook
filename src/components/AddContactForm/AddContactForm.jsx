@@ -28,12 +28,11 @@ const AddContactForm = () => {
     <Form onSubmit={handleSubmit}>
       <Label>
         <FieldName>Name:</FieldName>
-
         <Input type="text" name="name" value={name} onChange={handleChange} />
       </Label>
+
       <Label>
         <FieldName>Number:</FieldName>
-
         <Input
           type="tel"
           name="number"

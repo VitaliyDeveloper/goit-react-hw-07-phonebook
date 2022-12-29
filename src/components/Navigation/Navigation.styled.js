@@ -25,7 +25,7 @@ export const LogoContainer = styled.div`
 `;
 
 export const Logo = styled(BsJournalBookmarkFill)`
-  fill: var(--second-color);
+  fill: var(--some-white-color);
   margin-bottom: 5px;
   animation: book 5000ms ease-in-out infinite;
 
@@ -44,7 +44,7 @@ export const Logo = styled(BsJournalBookmarkFill)`
 
 export const Logotext = styled.span`
   font-size: 15px;
-  color: var(--second-color);
+  color: var(--some-white-color);
 `;
 
 export const ListStyle = styled.ul`
