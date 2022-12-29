@@ -15,15 +15,13 @@ export const ContactItem = styled.li`
   justify-content: space-between;
   background-color: var(--second-color);
   min-width: 300px;
-  padding: 10px;
+  padding: 5px 10px 15px 10px;
   margin: 10px;
+  border-top: 10px solid var(--second-color);
   transition: 200ms ease-in-out;
 
-  &::after {
-    top: 0;
-    height: 10px;
-    position: absolute;
-    background-color: var(--accent-color);
+  &:hover {
+    border-top: 10px solid var(--accent-color);
   }
 `;
 
@@ -43,7 +41,7 @@ export const BtnDelete = styled.button`
   padding: 10px;
   background-color: var(--second-color);
   color: var(--some-white-color);
-  border: none;
+  border: 1px solid var(--accent-color);
   transition: all 250ms ease-in-out;
 
   &:hover {
