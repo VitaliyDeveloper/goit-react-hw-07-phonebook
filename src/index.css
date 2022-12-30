@@ -18,6 +18,21 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+}
+
+body::after {
+  content: '';
+  position: absolute;
+  top: 300px;
+  min-height: 500px;
+  width: 100vh;
+  opacity: 50%;
+  background-image: url(./img/man-book.png);
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -1;
 }
 
 code {

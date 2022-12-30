@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { getContacts } from 'components/redux/contacts/contacts-selectors';
-import { deleteContact } from 'components/redux/contacts/contacts-actions';
+import { deleteContact } from 'components/redux/contacts/contactsSlice';
 import avatar from '../../img/no-photo.jpg';
 
 import {
