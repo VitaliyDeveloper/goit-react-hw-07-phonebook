@@ -11,10 +11,12 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
 import contactsReducer from './contacts/contactsSlice';
+import filterReducer from './filter/filterSlice';
 
 const persistConfig = {
   key: 'contacts',
   storage,
+  blacklist: ['filter'], // navigation will not be persisted
 };
 
 const persistedReducer = persistReducer(persistConfig, contactsReducer);
@@ -22,6 +24,7 @@ const persistedReducer = persistReducer(persistConfig, contactsReducer);
 export const store = configureStore({
   reducer: {
     contacts: persistedReducer,
+    filter: filterReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

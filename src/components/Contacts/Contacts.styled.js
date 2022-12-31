@@ -11,6 +11,7 @@ export const ContactsList = styled.ul`
 export const ContactItem = styled.li`
   position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
   background-color: var(--second-color);
@@ -50,7 +51,19 @@ export const BtnDelete = styled.button`
   }
 `;
 
-export const Avatar = styled.img`
+export const StatusContainer = styled.div`
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border-top: 3px solid var(--accent-color);
+
+  &:hover {
+    display: flex;
+  }
+`;
+
+export const StatusImg = styled.img`
   border-radius: 50%;
-  margin-right: 10px;
+  margin: 10px;
 `;

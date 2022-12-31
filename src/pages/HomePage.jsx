@@ -1,7 +1,13 @@
 import Contacts from 'components/Contacts/Contacts';
+import Filter from 'components/Filter/Filter';
 
 const HomePage = () => {
-  return <Contacts />;
+  return (
+    <>
+      <Filter />
+      <Contacts />;
+    </>
+  );
 };
 
 export default HomePage;
