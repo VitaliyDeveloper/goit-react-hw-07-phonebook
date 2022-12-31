@@ -8,7 +8,7 @@ const Layout = () => {
       <header>
         <Navigation />
       </header>
-      <main style={{ minHeight: '75vh' }}>
+      <main style={{ minHeight: '100vh', marginLeft: '160px' }}>
         <Outlet />
       </main>
       <footer>

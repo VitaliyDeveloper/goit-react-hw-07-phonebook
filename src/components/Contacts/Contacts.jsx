@@ -12,6 +12,7 @@ import {
   FieldContact,
   StatusContainer,
   StatusImg,
+  FieldContactContainer,
 } from 'components/Contacts/Contacts.styled';
 
 const Contacts = () => {
@@ -37,10 +38,20 @@ const Contacts = () => {
         <ContactItem key={id}>
           <ContactContainer>
             <Avatar name={name} size="50" />
-            <FieldContact>Name: {name}</FieldContact>
-            <FieldContact>Number: {number}</FieldContact>
-            <FieldContact>E-mail: {mail}</FieldContact>
-
+            <FieldContactContainer>
+              <FieldContact>Name: {name}</FieldContact>
+              <FieldContact>Number: {number}</FieldContact>
+              <FieldContact>E-mail: {mail}</FieldContact>
+            </FieldContactContainer>
+            <StatusContainer>
+              <StatusImg
+                src={status.image}
+                alt={status.answer}
+                width="50"
+                height="50"
+              />
+              <p>Online: {status.answer}</p>
+            </StatusContainer>
             <BtnDelete
               onClick={() => {
                 dispatch(deleteContact(id));
@@ -49,15 +60,6 @@ const Contacts = () => {
               Delete
             </BtnDelete>
           </ContactContainer>
-          <StatusContainer>
-            <StatusImg
-              src={status.image}
-              alt={status.answer}
-              width="50"
-              height="50"
-            />
-            <p>Online: {status.answer}</p>
-          </StatusContainer>
         </ContactItem>
       ))}
     </ContactsList>

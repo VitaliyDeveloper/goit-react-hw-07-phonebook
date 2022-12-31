@@ -1,9 +1,24 @@
 import styled from 'styled-components';
 
+// const hidden = css`
+//   display: none;
+//   visibility: hidden;
+//   opacity: 0;
+//   background: #fff;
+//   z-index: 100;
+// `;
+
+// const visible = css`
+//   display: flex;
+//   visibility: visible;
+//   opacity: 1;
+// `;
+
 export const ContactsList = styled.ul`
   padding: 10px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(1, 1fr);
+  justify-content: space-between;
   list-style: none;
   border-top: 5px solid var(--second-color);
 `;
@@ -11,29 +26,36 @@ export const ContactsList = styled.ul`
 export const ContactItem = styled.li`
   position: relative;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
   background-color: var(--second-color);
   min-width: 300px;
   padding: 5px 10px 15px 10px;
   margin: 10px;
   border-top: 10px solid var(--second-color);
-  transition: 200ms ease-in-out;
+  scale: 1;
+  transition: 350ms;
 
   &:hover {
     border-top: 10px solid var(--accent-color);
+    scale: 1.05;
   }
 `;
 
 export const ContactContainer = styled.div`
   display: flex;
   align-items: center;
+  justify-content: space-around;
+`;
+
+export const FieldContactContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-width: 250px;
 `;
 
 export const FieldContact = styled.p`
   font-size: medium;
-  max-width: 100px;
+  min-width: 150px;
   color: var(--some-white-color);
   margin: 0 10px;
 `;
@@ -44,6 +66,7 @@ export const BtnDelete = styled.button`
   color: var(--some-white-color);
   border: 1px solid var(--accent-color);
   transition: all 250ms ease-in-out;
+  margin: 0 20px 0 0;
 
   &:hover {
     background-color: var(--accent-color);
@@ -52,15 +75,15 @@ export const BtnDelete = styled.button`
 `;
 
 export const StatusContainer = styled.div`
-  display: none;
+  display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  border-top: 3px solid var(--accent-color);
-
-  &:hover {
-    display: flex;
-  }
+  width: 200px;
+  border-left: 3px solid var(--accent-color);
+  border-right: 3px solid var(--accent-color);
+  margin: 0 20px;
+  color: var(--some-white-color);
+  font-size: 20px;
 `;
 
 export const StatusImg = styled.img`

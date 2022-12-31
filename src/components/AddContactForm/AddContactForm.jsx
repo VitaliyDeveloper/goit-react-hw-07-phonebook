@@ -3,7 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'components/redux/contacts/contactsSlice';
 import { nanoid } from 'nanoid';
 import { Notify } from 'notiflix';
-import { Input, Label, BtnAdd, Form, FieldName } from './AddContactForm.styled';
+import {
+  Input,
+  Label,
+  BtnAdd,
+  Form,
+  FieldName,
+  Modal,
+} from './AddContactForm.styled';
 import { getStatus } from 'services/answerApi';
 import { getContacts } from 'components/redux/contacts/contacts-selectors';
 
@@ -67,38 +74,45 @@ const AddContactForm = () => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Label>
-        <FieldName>Name:</FieldName>
-        <Input
-          type="text"
-          name="name"
-          value={name}
-          onChange={handleChange}
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          required
-        />
-      </Label>
+    <Modal>
+      <Form onSubmit={handleSubmit}>
+        <Label>
+          <FieldName>Name:</FieldName>
+          <Input
+            type="text"
+            name="name"
+            value={name}
+            onChange={handleChange}
+            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            required
+          />
+        </Label>
 
-      <Label>
-        <FieldName>Number:</FieldName>
-        <Input
-          type="tel"
-          name="number"
-          value={number}
-          onChange={handleChange}
-          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-          required
-        />
-      </Label>
+        <Label>
+          <FieldName>Number:</FieldName>
+          <Input
+            type="tel"
+            name="number"
+            value={number}
+            onChange={handleChange}
+            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+            required
+          />
+        </Label>
 
-      <Label>
-        <FieldName>E-mail:</FieldName>
-        <Input type="mailto" name="mail" value={mail} onChange={handleChange} />
-      </Label>
+        <Label>
+          <FieldName>E-mail:</FieldName>
+          <Input
+            type="mailto"
+            name="mail"
+            value={mail}
+            onChange={handleChange}
+          />
+        </Label>
 
-      <BtnAdd>Add contact</BtnAdd>
-    </Form>
+        <BtnAdd>Add contact</BtnAdd>
+      </Form>
+    </Modal>
   );
 };
 

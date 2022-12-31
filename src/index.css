@@ -24,8 +24,9 @@ body {
 body::after {
   content: '';
   position: absolute;
-  top: 300px;
-  min-height: 500px;
+  bottom: -30px;
+  left: 120px;
+  min-height: 700px;
   width: 100vh;
   opacity: 50%;
   background-image: url(./img/man-book.png);
