@@ -48,7 +48,7 @@ export const Logo = styled(BsJournalBookmarkFill)`
 
 export const Logotext = styled.span`
   font-size: 15px;
-  text-decoration: underline;
+  /* text-decoration: underline; */
   color: var(--some-white-color);
 `;
 
