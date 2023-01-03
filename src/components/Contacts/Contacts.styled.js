@@ -18,7 +18,7 @@ export const ContactsList = styled.ul`
   padding: 10px;
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  justify-content: space-between;
+  justify-content: center;
   list-style: none;
   border-top: 5px solid var(--second-color);
 `;
@@ -32,12 +32,10 @@ export const ContactItem = styled.li`
   padding: 5px 10px 15px 10px;
   margin: 10px;
   border-top: 10px solid var(--second-color);
-  scale: 1;
   transition: 350ms;
 
   &:hover {
     border-top: 10px solid var(--accent-color);
-    scale: 1.05;
   }
 `;
 

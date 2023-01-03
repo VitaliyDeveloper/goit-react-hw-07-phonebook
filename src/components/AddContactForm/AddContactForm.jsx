@@ -57,7 +57,7 @@ const AddContactForm = () => {
     if (isExist) {
       resetFields();
 
-      return Notify.failure(`${name} is alredy in contacts.`);
+      return Notify.failure(`This contact is alredy in contacts.`);
     }
 
     console.log(status);
