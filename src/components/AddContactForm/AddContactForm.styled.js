@@ -14,8 +14,9 @@ export const Label = styled.label`
 `;
 
 export const FieldName = styled.p`
+  color: var(--second-color);
   font-weight: bold;
-  color: var(--first-color-dark);
+  /* color: var(--first-color-dark); */
 `;
 
 export const Input = styled.input`
