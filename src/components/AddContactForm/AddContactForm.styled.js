@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Modal = styled.div``;
 
 export const Form = styled.form`
+  padding-top: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,8 +19,13 @@ export const FieldName = styled.p`
 `;
 
 export const Input = styled.input`
-  font-size: 16px;
-  padding: 5px;
+  font-size: 18px;
+  padding: 15px;
+  border-color: var(--some-white-color);
+
+  &:hover {
+    border: 2px solid var(--second-color);
+  }
 `;
 
 export const BtnAdd = styled.button`

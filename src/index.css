@@ -6,7 +6,9 @@
   --accent-color: #6FB98F;
   --second-color: #2c7873;
   --some-second-color: #004445;
-  --some-white-color: #f1dcc9;
+  --some-white-color: #f0e2d5;
+  /* --some-white-color: #f1dcc9; */
+
 
 }
 
@@ -21,20 +23,6 @@ body {
 
 }
 
-body::after {
-  content: '';
-  position: absolute;
-  bottom: -50px;
-  left: 120px;
-  min-height: 700px;
-  width: 100vh;
-  opacity: 50%;
-  background-image: url(./img/man-book.png);
-  background-position: top;
-  background-repeat: no-repeat;
-  background-size: cover;
-  z-index: -1;
-}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

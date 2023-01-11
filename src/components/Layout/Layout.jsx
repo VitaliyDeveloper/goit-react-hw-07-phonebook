@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import Navigation from 'components/Navigation/Navigation';
 import Footer from 'components/Footer/Footer';
+import Main from './Layout.dtyled';
 
 const Layout = () => {
   return (
@@ -8,9 +9,9 @@ const Layout = () => {
       <header>
         <Navigation />
       </header>
-      <main style={{ minHeight: '100vh', marginLeft: '160px' }}>
+      <Main style={{ minHeight: '100vh', marginLeft: '160px' }}>
         <Outlet />
-      </main>
+      </Main>
       <footer>
         <Footer />
       </footer>
