@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { getContacts } from 'components/redux/contacts/contacts-selectors';
 import { getFilter } from 'components/redux/filter/filter-selectors';
-import { deleteContact } from 'components/redux/contacts/contactsSlice';
+import { deleteContacts } from 'components/redux/contacts/contacts-operations';
 import Avatar from 'react-avatar';
 
 import {
@@ -17,13 +17,13 @@ import {
 
 const Contacts = () => {
   const contacts = useSelector(getContacts);
-  console.log(contacts);
+  // console.log(contacts);
   const filter = useSelector(getFilter);
   const dispatch = useDispatch();
 
   const getVisibleContacts = () => {
     const normolizedFilter = filter.toLowerCase();
-    // console.log(normolizedFilter);
+    console.log(normolizedFilter);
 
     return contacts.filter(contact =>
       contact.name.toLowerCase().includes(normolizedFilter)
@@ -54,7 +54,7 @@ const Contacts = () => {
             </StatusContainer>
             <BtnDelete
               onClick={() => {
-                dispatch(deleteContact(id));
+                dispatch(deleteContacts(id));
               }}
             >
               Delete

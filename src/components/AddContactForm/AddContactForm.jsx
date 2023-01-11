@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'components/redux/contacts/contactsSlice';
+import { addContacts } from 'components/redux/contacts/contacts-operations';
 import { nanoid } from 'nanoid';
 import { Notify } from 'notiflix';
 import {
@@ -12,7 +12,10 @@ import {
   Modal,
 } from './AddContactForm.styled';
 import { getStatus } from 'services/answerApi';
-import { getContacts } from 'components/redux/contacts/contacts-selectors';
+import {
+  getContacts,
+  getIsLoading,
+} from 'components/redux/contacts/contacts-selectors';
 
 const AddContactForm = () => {
   const [name, setName] = useState('');
@@ -21,6 +24,7 @@ const AddContactForm = () => {
 
   const dispatch = useDispatch();
   const contacts = useSelector(getContacts);
+  const isLoading = useSelector(getIsLoading);
 
   const handleChange = event => {
     const { name, value } = event.target;
@@ -62,7 +66,7 @@ const AddContactForm = () => {
 
     console.log(status);
 
-    dispatch(addContact(contact));
+    dispatch(addContacts(contact));
 
     resetFields();
   };
@@ -75,43 +79,47 @@ const AddContactForm = () => {
 
   return (
     <Modal>
-      <Form onSubmit={handleSubmit}>
-        <Label>
-          <FieldName>Name:</FieldName>
-          <Input
-            type="text"
-            name="name"
-            value={name}
-            onChange={handleChange}
-            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            required
-          />
-        </Label>
+      {isLoading ? (
+        <h1>IS LOADING</h1>
+      ) : (
+        <Form onSubmit={handleSubmit}>
+          <Label>
+            <FieldName>Name:</FieldName>
+            <Input
+              type="text"
+              name="name"
+              value={name}
+              onChange={handleChange}
+              pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+              required
+            />
+          </Label>
 
-        <Label>
-          <FieldName>Number:</FieldName>
-          <Input
-            type="tel"
-            name="number"
-            value={number}
-            onChange={handleChange}
-            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-            required
-          />
-        </Label>
+          <Label>
+            <FieldName>Number:</FieldName>
+            <Input
+              type="tel"
+              name="number"
+              value={number}
+              onChange={handleChange}
+              pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+              required
+            />
+          </Label>
 
-        <Label>
-          <FieldName>E-mail:</FieldName>
-          <Input
-            type="mailto"
-            name="mail"
-            value={mail}
-            onChange={handleChange}
-          />
-        </Label>
+          <Label>
+            <FieldName>E-mail:</FieldName>
+            <Input
+              type="mailto"
+              name="mail"
+              value={mail}
+              onChange={handleChange}
+            />
+          </Label>
 
-        <BtnAdd>Add contact</BtnAdd>
-      </Form>
+          <BtnAdd>Add contact</BtnAdd>
+        </Form>
+      )}
     </Modal>
   );
 };
