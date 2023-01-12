@@ -12,7 +12,7 @@ import {
   Modal,
 } from './AddContactForm.styled';
 import { getStatus } from 'services/answerApi';
-import { getContacts, getIsLoading } from 'redux/contacts/contacts-selectors';
+import { getContacts } from 'redux/contacts/contacts-selectors';
 
 const AddContactForm = () => {
   const [name, setName] = useState('');
@@ -21,7 +21,7 @@ const AddContactForm = () => {
 
   const dispatch = useDispatch();
   const contacts = useSelector(getContacts);
-  const isLoading = useSelector(getIsLoading);
+  // const isLoading = useSelector(getIsLoading);
 
   const handleChange = event => {
     const { name, value } = event.target;
