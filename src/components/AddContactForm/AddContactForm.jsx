@@ -60,9 +60,8 @@ const AddContactForm = () => {
       return Notify.failure(`This contact is alredy in contacts.`);
     }
 
-    // console.log(status);
-
     dispatch(addContacts(contact));
+    console.log(contact);
 
     resetFields();
   };

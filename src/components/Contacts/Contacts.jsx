@@ -2,8 +2,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getContacts } from 'redux/contacts/contacts-selectors';
 import { getFilter } from 'redux/filter/filter-selectors';
 import { deleteContacts } from 'redux/contacts/contacts-operations';
-// import { fetchContacts } from 'redux/contacts/contacts-operations';
+import { fetchContacts } from 'redux/contacts/contacts-operations';
 import Avatar from 'react-avatar';
+import { useEffect } from 'react';
 
 import {
   ContactsList,
@@ -11,19 +12,17 @@ import {
   ContactContainer,
   BtnDelete,
   FieldContact,
-  StatusContainer,
-  StatusImg,
   FieldContactContainer,
 } from 'components/Contacts/Contacts.styled';
 
 const Contacts = () => {
   const contacts = useSelector(getContacts);
-  // console.log(contacts);
   const filter = useSelector(getFilter);
   const dispatch = useDispatch();
 
-  // let fett = dispatch(fetchContacts());
-  // console.log(fett); 1
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
   const getVisibleContacts = () => {
     const normolizedFilter = filter.toLowerCase();
@@ -38,7 +37,7 @@ const Contacts = () => {
 
   return (
     <ContactsList>
-      {filteredContacts.map(({ name, number, mail, id, status }) => (
+      {filteredContacts.map(({ name, number, mail, id }) => (
         <ContactItem key={id}>
           <ContactContainer>
             <Avatar name={name} size="50" />
@@ -47,15 +46,7 @@ const Contacts = () => {
               <FieldContact>Number: {number}</FieldContact>
               <FieldContact>E-mail: {mail}</FieldContact>
             </FieldContactContainer>
-            <StatusContainer>
-              <StatusImg
-                src={status.image}
-                alt={status.answer}
-                width="50"
-                height="50"
-              />
-              <p>Online: {status.answer}</p>
-            </StatusContainer>
+
             <BtnDelete
               onClick={() => {
                 dispatch(deleteContacts(id));
