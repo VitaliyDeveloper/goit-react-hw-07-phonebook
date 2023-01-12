@@ -22,10 +22,10 @@ const Contacts = () => {
   const filter = useSelector(getFilter);
   const dispatch = useDispatch();
 
-  // console.log(fett);
+  // let fett = dispatch(fetchContacts());
+  // console.log(fett); 1
 
   const getVisibleContacts = () => {
-    // dispatch(fetchContacts());
     const normolizedFilter = filter.toLowerCase();
     console.log(normolizedFilter);
 
@@ -47,7 +47,7 @@ const Contacts = () => {
               <FieldContact>Number: {number}</FieldContact>
               <FieldContact>E-mail: {mail}</FieldContact>
             </FieldContactContainer>
-            <StatusContainer>
+            {/* <StatusContainer>
               <StatusImg
                 src={status.image}
                 alt={status.answer}
@@ -55,7 +55,7 @@ const Contacts = () => {
                 height="50"
               />
               <p>Online: {status.answer}</p>
-            </StatusContainer>
+            </StatusContainer> */}
             <BtnDelete
               onClick={() => {
                 dispatch(deleteContacts(id));
