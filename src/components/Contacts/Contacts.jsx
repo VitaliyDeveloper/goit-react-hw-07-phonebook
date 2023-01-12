@@ -22,7 +22,10 @@ const Contacts = () => {
   const filter = useSelector(getFilter);
   const dispatch = useDispatch();
 
+  // console.log(fett);
+
   const getVisibleContacts = () => {
+    // dispatch(fetchContacts());
     const normolizedFilter = filter.toLowerCase();
     console.log(normolizedFilter);
 
