@@ -11,8 +11,8 @@ import {
   ContactContainer,
   BtnDelete,
   FieldContact,
-  // StatusContainer,
-  // StatusImg,
+  StatusContainer,
+  StatusImg,
   FieldContactContainer,
 } from 'components/Contacts/Contacts.styled';
 
@@ -47,7 +47,7 @@ const Contacts = () => {
               <FieldContact>Number: {number}</FieldContact>
               <FieldContact>E-mail: {mail}</FieldContact>
             </FieldContactContainer>
-            {/* <StatusContainer>
+            <StatusContainer>
               <StatusImg
                 src={status.image}
                 alt={status.answer}
@@ -55,7 +55,7 @@ const Contacts = () => {
                 height="50"
               />
               <p>Online: {status.answer}</p>
-            </StatusContainer> */}
+            </StatusContainer>
             <BtnDelete
               onClick={() => {
                 dispatch(deleteContacts(id));
