@@ -21,7 +21,6 @@ const AddContactForm = () => {
 
   const dispatch = useDispatch();
   const contacts = useSelector(getContacts);
-  // const isLoading = useSelector(getIsLoading);
 
   const handleChange = event => {
     const { name, value } = event.target;

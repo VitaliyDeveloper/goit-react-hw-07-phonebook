@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getContacts } from 'redux/contacts/contacts-selectors';
 import { getFilter } from 'redux/filter/filter-selectors';
 import { deleteContacts } from 'redux/contacts/contacts-operations';
-import { fetchContacts } from 'redux/contacts/contacts-operations';
+// import { fetchContacts } from 'redux/contacts/contacts-operations';
 import Avatar from 'react-avatar';
 
 import {
@@ -11,8 +11,8 @@ import {
   ContactContainer,
   BtnDelete,
   FieldContact,
-  StatusContainer,
-  StatusImg,
+  // StatusContainer,
+  // StatusImg,
   FieldContactContainer,
 } from 'components/Contacts/Contacts.styled';
 
