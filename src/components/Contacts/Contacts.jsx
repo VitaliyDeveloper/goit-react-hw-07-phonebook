@@ -1,7 +1,8 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { getContacts } from 'components/redux/contacts/contacts-selectors';
-import { getFilter } from 'components/redux/filter/filter-selectors';
-import { deleteContacts } from 'components/redux/contacts/contacts-operations';
+import { getContacts } from 'redux/contacts/contacts-selectors';
+import { getFilter } from 'redux/filter/filter-selectors';
+import { deleteContacts } from 'redux/contacts/contacts-operations';
+import { fetchContacts } from 'redux/contacts/contacts-operations';
 import Avatar from 'react-avatar';
 
 import {
