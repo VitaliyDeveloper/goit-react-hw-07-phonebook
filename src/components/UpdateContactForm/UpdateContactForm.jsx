@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { updateContacts } from 'redux/contacts/contacts-operations';
 import { useState } from 'react';
 import {
@@ -9,14 +9,25 @@ import {
   FieldName,
 } from './UpdateContactForm.styled';
 
-const UpdateContactForm = (closeForm, contactUpdate) => {
-  const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
-  const [mail, setMail] = useState('');
+const UpdateContactForm = ({ closeForm, contactUpdate }) => {
+  const [name, setName] = useState(contactUpdate.name);
+  const [number, setNumber] = useState(contactUpdate.number);
+  const [mail, setMail] = useState(contactUpdate.mail);
 
   const dispatch = useDispatch();
 
-  const handleSubmit = () => {};
+  const handleSubmit = event => {
+    event.preventDefault();
+    dispatch(
+      updateContacts({
+        ...contactUpdate,
+        name,
+        mail,
+        number,
+      })
+    );
+    closeForm();
+  };
 
   const handleChange = event => {
     const { name, value } = event.target;
@@ -49,7 +60,6 @@ const UpdateContactForm = (closeForm, contactUpdate) => {
           value={name}
           onChange={handleChange}
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          required
         />
       </Label>
 
@@ -60,8 +70,7 @@ const UpdateContactForm = (closeForm, contactUpdate) => {
           name="number"
           value={number}
           onChange={handleChange}
-          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-          required
+          // pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
         />
       </Label>
 
@@ -70,7 +79,7 @@ const UpdateContactForm = (closeForm, contactUpdate) => {
         <Input type="mailto" name="mail" value={mail} onChange={handleChange} />
       </Label>
 
-      <BtnAdd>Add contact</BtnAdd>
+      <BtnAdd>Save</BtnAdd>
     </Form>
   );
 };

@@ -25,8 +25,8 @@ const Contacts = () => {
   }, [dispatch]);
 
   const showUpdateForm = contactId => {
-    const contacts = contacts.find(({ id }) => id === contactId);
-    setContactUpdate(contacts);
+    const contact = contacts.find(({ id }) => id === contactId);
+    setContactUpdate(contact);
   };
 
   const closeForm = () => {
@@ -52,10 +52,12 @@ const Contacts = () => {
               Edit
             </BtnDelete>
           </ContactContainer>
-          <UpdateContactForm
-            contactUpdate={contactUpdate}
-            closeForm={closeForm}
-          />
+          {contactUpdate && contactUpdate.id === id && (
+            <UpdateContactForm
+              contactUpdate={contactUpdate}
+              closeForm={closeForm}
+            />
+          )}
         </ContactItem>
       ))}
     </ContactsList>

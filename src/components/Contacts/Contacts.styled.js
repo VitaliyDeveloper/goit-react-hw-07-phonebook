@@ -48,7 +48,7 @@ export const ContactContainer = styled.div`
 export const FieldContactContainer = styled.div`
   display: flex;
   flex-direction: column;
-  min-width: 250px;
+  min-width: 300px;
 `;
 
 export const FieldContact = styled.p`
