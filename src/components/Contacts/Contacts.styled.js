@@ -16,8 +16,8 @@ import styled from 'styled-components';
 
 export const ContactsList = styled.ul`
   padding: 10px;
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   list-style: none;
   border-top: 5px solid var(--second-color);
@@ -27,7 +27,9 @@ export const ContactItem = styled.li`
   position: relative;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   background-color: var(--second-color);
+  opacity: 0.9;
   min-width: 300px;
   padding: 5px 10px 15px 10px;
   margin: 10px;
@@ -36,13 +38,14 @@ export const ContactItem = styled.li`
 
   &:hover {
     border-top: 10px solid var(--accent-color);
+    opacity: 1;
   }
 `;
 
 export const ContactContainer = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  /* justify-content: space-around; */
 `;
 
 export const FieldContactContainer = styled.div`
@@ -64,11 +67,14 @@ export const BtnDelete = styled.button`
   color: var(--some-white-color);
   border: 1px solid var(--accent-color);
   transition: all 250ms ease-in-out;
-  margin: 0 20px 0 0;
 
   &:hover {
     background-color: var(--accent-color);
     color: var(--second-color);
+  }
+
+  &:not(:last-child) {
+    margin: 0 20px 0 0;
   }
 `;
 

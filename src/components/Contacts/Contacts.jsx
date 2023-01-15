@@ -1,5 +1,8 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { selectVisibleContacts } from 'redux/contacts/contacts-selectors';
+import {
+  selectVisibleContacts,
+  selectIsLoading,
+} from 'redux/contacts/contacts-selectors';
 import { deleteContacts } from 'redux/contacts/contacts-operations';
 import { fetchContacts } from 'redux/contacts/contacts-operations';
 import Avatar from 'react-avatar';
@@ -18,6 +21,7 @@ import {
 const Contacts = () => {
   const [contactUpdate, setContactUpdate] = useState(null);
   const contacts = useSelector(selectVisibleContacts);
+  const isLoading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -46,11 +50,9 @@ const Contacts = () => {
             </FieldContactContainer>
 
             <BtnDelete onClick={() => dispatch(deleteContacts(id))}>
-              Delete
+              {isLoading ? 'Deleting' : 'Delete'}
             </BtnDelete>
-            <BtnDelete onClick={() => dispatch(showUpdateForm(id))}>
-              Edit
-            </BtnDelete>
+            <BtnDelete onClick={() => showUpdateForm(id)}>Edit</BtnDelete>
           </ContactContainer>
           {contactUpdate && contactUpdate.id === id && (
             <UpdateContactForm

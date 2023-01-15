@@ -61,7 +61,7 @@ const AddContactForm = () => {
     }
 
     dispatch(addContacts(contact));
-    console.log(contact);
+    // console.log(contact);
 
     resetFields();
   };

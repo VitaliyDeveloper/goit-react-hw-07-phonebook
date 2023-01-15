@@ -8,6 +8,7 @@ import {
   Form,
   FieldName,
 } from './UpdateContactForm.styled';
+import { Notify } from 'notiflix';
 
 const UpdateContactForm = ({ closeForm, contactUpdate }) => {
   const [name, setName] = useState(contactUpdate.name);
@@ -15,19 +16,6 @@ const UpdateContactForm = ({ closeForm, contactUpdate }) => {
   const [mail, setMail] = useState(contactUpdate.mail);
 
   const dispatch = useDispatch();
-
-  const handleSubmit = event => {
-    event.preventDefault();
-    dispatch(
-      updateContacts({
-        ...contactUpdate,
-        name,
-        mail,
-        number,
-      })
-    );
-    closeForm();
-  };
 
   const handleChange = event => {
     const { name, value } = event.target;
@@ -48,6 +36,20 @@ const UpdateContactForm = ({ closeForm, contactUpdate }) => {
       default:
         return;
     }
+  };
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    dispatch(
+      updateContacts({
+        ...contactUpdate,
+        name,
+        mail,
+        number,
+      })
+    );
+    Notify.success('Contact update');
+    closeForm();
   };
 
   return (

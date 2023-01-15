@@ -26,9 +26,6 @@ const contactsSlice = createSlice({
       .addCase(fetchContacts.fulfilled, (state, { payload }) => {
         state.items = payload;
       })
-      .addCase(deleteContacts.fulfilled, (state, { payload }) => {
-        state.items = state.items.filter(({ id }) => id !== payload);
-      })
       .addCase(addContacts.fulfilled, (state, { payload }) => {
         state.items = [...state.items, payload];
       })
@@ -37,6 +34,9 @@ const contactsSlice = createSlice({
           contact => contact.id === payload.id
         );
         state.items[index] = payload;
+      })
+      .addCase(deleteContacts.fulfilled, (state, { payload }) => {
+        state.items = state.items.filter(({ id }) => id !== payload);
       })
       .addMatcher(
         isAnyOf(
