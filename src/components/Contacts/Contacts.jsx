@@ -1,10 +1,10 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { getContacts } from 'redux/contacts/contacts-selectors';
-import { getFilter } from 'redux/filter/filter-selectors';
+import { selectVisibleContacts } from 'redux/contacts/contacts-selectors';
 import { deleteContacts } from 'redux/contacts/contacts-operations';
 import { fetchContacts } from 'redux/contacts/contacts-operations';
 import Avatar from 'react-avatar';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import UpdateContactForm from 'components/UpdateContactForm/UpdateContactForm';
 
 import {
   ContactsList,
@@ -16,28 +16,26 @@ import {
 } from 'components/Contacts/Contacts.styled';
 
 const Contacts = () => {
-  const contacts = useSelector(getContacts);
-  const filter = useSelector(getFilter);
+  const [contactUpdate, setContactUpdate] = useState(null);
+  const contacts = useSelector(selectVisibleContacts);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
-  const getVisibleContacts = () => {
-    const normolizedFilter = filter.toLowerCase();
-    console.log(normolizedFilter);
-
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(normolizedFilter)
-    );
+  const showUpdateForm = contactId => {
+    const contacts = contacts.find(({ id }) => id === contactId);
+    setContactUpdate(contacts);
   };
 
-  const filteredContacts = getVisibleContacts();
+  const closeForm = () => {
+    setContactUpdate(null);
+  };
 
   return (
     <ContactsList>
-      {filteredContacts.map(({ name, number, mail, id }) => (
+      {contacts.map(({ name, number, mail, id }) => (
         <ContactItem key={id}>
           <ContactContainer>
             <Avatar name={name} size="50" />
@@ -47,14 +45,17 @@ const Contacts = () => {
               <FieldContact>E-mail: {mail}</FieldContact>
             </FieldContactContainer>
 
-            <BtnDelete
-              onClick={() => {
-                dispatch(deleteContacts(id));
-              }}
-            >
+            <BtnDelete onClick={() => dispatch(deleteContacts(id))}>
               Delete
             </BtnDelete>
+            <BtnDelete onClick={() => dispatch(showUpdateForm(id))}>
+              Edit
+            </BtnDelete>
           </ContactContainer>
+          <UpdateContactForm
+            contactUpdate={contactUpdate}
+            closeForm={closeForm}
+          />
         </ContactItem>
       ))}
     </ContactsList>
